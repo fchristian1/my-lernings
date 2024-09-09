@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Numer guessing game</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JunusErgin/fast-ui/style.css" />
+    </head>
+    <body>
+        <header>NUMBER GUESSING GAME</header>
+        <div class="container">
+            <h1 id="headline">Bitte rate die Zahl!</h1>
+            <h2 id="displayAttemps">Versuche: 0</h2>
+            <form onsubmit="guessTheNumber(event); return false;">
+                <input type="number" required placeholder="Bitte eine Zahle eingeben" name="guess" id="guessInput" />
+                <button>Raten!</button>
+            </form>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
