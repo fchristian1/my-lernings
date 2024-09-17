@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { registerAuth } from "../../services/auth.service";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+    const navi = useNavigate();
     const [newUser, setNewUser] = useState({
         email: "sf2@mail1.net",
         passwordA: "1234567890",
@@ -59,7 +62,16 @@ export default function Register() {
 
             <button
                 onClick={async () => {
-                    console.log("Register", newUser);
+                    (newUser.email === "" ||
+                        newUser.passwordA === "" ||
+                        newUser.passwordB === "") ??
+                        alert("Fill in all fields");
+                    newUser.passwordA !== newUser.passwordB ??
+                        alert("Passwords do not match");
+
+                    registerAuth(newUser.email, newUser.passwordA)
+                        ? navi("/login")
+                        : alert("Register failed");
                 }}
             >
                 Register

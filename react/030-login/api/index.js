@@ -3,6 +3,7 @@ import cors from "cors";
 import { userRouter } from "./users/user.router.js";
 import { loginRouter } from "./auth/login.router.js";
 import { authMiddleware } from "./auth/auth.middleware.js";
+import { registerRouter } from "./auth/register.route.js";
 
 const app = express();
 app.use(cors());
@@ -10,6 +11,7 @@ app.use(express.json());
 
 app.use("/api/users", userRouter);
 app.use("/api/auth", loginRouter);
+app.use("/api/auth/", registerRouter);
 app.get("/", (req, res) => {
     res.send("Hello World!");
 });

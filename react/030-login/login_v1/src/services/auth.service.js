@@ -20,6 +20,15 @@ export async function tokenCheckAuth(token) {
         : deleteUserDataOnClientAuth();
     return data;
 }
+export async function registerAuth(email, password) {
+    return (
+        await postToApi("http://localhost:3000/api/auth/register", {
+            email,
+            password,
+        })
+    ).success;
+}
+
 export function updateTokenDataOnClientAuth(token) {
     let data = readUserDataOnClientAuth();
     data.token = token;
