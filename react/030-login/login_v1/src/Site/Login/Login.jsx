@@ -4,8 +4,8 @@ import { loginAuth } from "../../services/auth.service";
 
 export function Login({ user, setUser }) {
     const [loginUser, setLoginUser] = useState({
-        email: "fc1@gmx.net",
-        password: "26094809",
+        email: "fc1@mail.net",
+        password: "1234567890",
     });
     const navi = useNavigate();
     return (

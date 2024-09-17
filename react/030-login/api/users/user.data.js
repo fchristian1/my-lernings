@@ -1,7 +1,7 @@
 import { User } from "./user/user.js";
 
 let users = [];
-createUserData("fc1@gmx.net", "26094809");
+createUserData("fc1@mail.net", "1234567890");
 
 export function createUserData(email, password) {
     let user = new User(email, password);
