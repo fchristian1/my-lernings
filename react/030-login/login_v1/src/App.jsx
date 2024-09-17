@@ -4,14 +4,25 @@ import {
     Route,
     Outlet,
 } from "react-router-dom";
-import Nav from "./Nav/Nav";
-import { Login } from "./Login/Login";
-import Home from "./Home/Home";
-import { useState } from "react";
-import Logout from "./Logout/Logout";
-import Profile from "./Profile/Profile";
+import Nav from "./Site/Nav/Nav";
+import { Login } from "./Site/Login/Login";
+import Home from "./Site/Home/Home";
+import { useEffect, useState } from "react";
+import Logout from "./Site/Logout/Logout";
+import Profile from "./Site/Profile/Profile";
+import {
+    readUserDataOnClientAuth,
+    tokenCheckAuth,
+} from "./services/auth.service";
+import LoginRegisterMenu from "./Site/Login/LoginRegisterMenu";
 function App() {
     const [user, setUser] = useState(null);
+    useEffect(() => {
+        let userData = readUserDataOnClientAuth();
+        setUser(userData);
+        tokenCheckAuth(userData?.token);
+    }, []);
+
     return (
         <>
             <Router>
@@ -20,7 +31,12 @@ function App() {
                         <Route path={"/"} element={<Home />} />
                         <Route
                             path={"/login"}
-                            element={<Login user={user} setUser={setUser} />}
+                            element={
+                                <LoginRegisterMenu
+                                    user={user}
+                                    setUser={setUser}
+                                />
+                            }
                         />
                         <Route
                             path={"/logout"}

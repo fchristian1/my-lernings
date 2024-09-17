@@ -1,20 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
-export function Login({ user, setUser }) {
-    const [loginUser, setLoginUser] = useState({
-        email: "",
-        passwordA: "",
-        passwordB: "",
+export default function Register() {
+    const [newUser, setNewUser] = useState({
+        email: "fc1@gmx.net",
+        passwordA: "26094809",
+        passwordB: "26094809",
     });
     return (
         <>
-            <h1>Login</h1>
+            <h1>Register</h1>
             <div className="flex col gap-8">
                 <label className="flex col gap-4">
                     Email:
                     <input
-                        value={loginUser.email}
+                        value={newUser.email}
                         onChange={(e) =>
                             setLoginUser({
                                 ...loginUser,
@@ -28,7 +27,7 @@ export function Login({ user, setUser }) {
                 <label className="flex col gap-4">
                     Password:
                     <input
-                        value={loginUser.passwordA}
+                        value={newUser.passwordA}
                         onChange={(e) =>
                             setLoginUser({
                                 ...loginUser,
@@ -43,7 +42,7 @@ export function Login({ user, setUser }) {
                 <label className="flex col gap-4">
                     Password:
                     <input
-                        value={loginUser.passwordB}
+                        value={newUser.passwordB}
                         onChange={(e) =>
                             setLoginUser({
                                 ...loginUser,
@@ -57,20 +56,14 @@ export function Login({ user, setUser }) {
                 </label>
             </div>
             <br />
-            <Link to={"/"}>
-                <button
-                    onClick={() => {
-                        setLoginUser({
-                            email: "",
-                            passwordA: "",
-                            passwordB: "",
-                        });
-                        setUser(loginUser);
-                    }}
-                >
-                    Login
-                </button>
-            </Link>
+
+            <button
+                onClick={async () => {
+                    console.log("Register", newUser);
+                }}
+            >
+                Register
+            </button>
         </>
     );
 }

@@ -1,18 +1,23 @@
-import { checkPasswordData, checkTokenData, logoutTokenData, setTokenData } from "../users/user.data.js";
+import {
+    checkPasswordData,
+    checkTokenData,
+    logoutTokenData,
+    readAllUsersData,
+    setTokenData,
+} from "../users/user.data.js";
 
 export async function loginController(req, res) {
-    let { email, passwordA, passwordB } = req.body;
-    if (passwordA !== passwordB) {
-        res.status(400).send("Passwords do not match");
+    let { email, password } = req.body;
+
+    if (email === "" || password === "") {
+        res.status(400).send({
+            error: "Email and password must not be empty",
+        });
         return;
     }
-    if (email === "" || passwordA === "") {
-        res.status(400).send("Email and password must not be empty");
-        return;
-    }
-    let check = checkPasswordData(email, passwordA);
+    let check = checkPasswordData(email, password);
     if (!check) {
-        res.status(401).send("Email or password is incorrect");
+        res.status(401).send({ error: "Email or password is incorrect" });
         return;
     }
     let token = crypto.randomUUID();
@@ -20,7 +25,16 @@ export async function loginController(req, res) {
     res.status(200).json({ login: true, token: token });
 }
 export async function logoutController(req, res) {
-    let { token } = req.body;
+    let { email } = req.body;
+    let authorization = req.headers.authorization;
+    let token = authorization.split(" ")[1];
+
+    let user = readAllUsersData().find((user) => user.email === email);
+    if (!user) {
+        res.status(401).send({ logout: false });
+        return;
+    }
+
     let check = checkTokenData(token);
     if (!check) {
         res.status(401).send({ logout: false });
