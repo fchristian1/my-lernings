@@ -1,0 +1,79 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+.flex {
+    display: flex;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-row {
+    flex-direction: row;
+}
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+.flex-space-between {
+    justify-content: space-between;
+}
+.pointer {
+    cursor: pointer;
+}
+.no-select {
+    user-select: none;
+}
+.w-100 {
+    width: 100%;
+}
+.text-left {
+    text-align: left;
+}
+.text-through {
+    text-decoration: line-through;
+}
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+}
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+}
+.border-radius-left {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.border-radius-right {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
+}
+
+.card {
+    padding: 2em;
+}
+
+.read-the-docs {
+    color: #888;
+}

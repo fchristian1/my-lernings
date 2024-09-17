@@ -1,0 +1,16 @@
+{
+  "name": "aufgabe2_20240904",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "newFile": "echo 'Hello world'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chalk": "^4.0.0"
+  }
+}
