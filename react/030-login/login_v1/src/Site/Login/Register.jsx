@@ -2,9 +2,9 @@ import { useState } from "react";
 
 export default function Register() {
     const [newUser, setNewUser] = useState({
-        email: "fc1@gmx.net",
-        passwordA: "26094809",
-        passwordB: "26094809",
+        email: "sf2@mail1.net",
+        passwordA: "1234567890",
+        passwordB: "1234567890",
     });
     return (
         <>
